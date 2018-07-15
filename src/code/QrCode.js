@@ -11,10 +11,16 @@ const SIZES = {
 
 class QrCode extends React.Component {
   render () {
-    const {level, value, size} = this.props
+    const { level, value, size } = this.props
     return (
       <div className='Code'>
-        <QrCodeReact className='Code__svg' level={level} value={value} size={SIZES[size]} renderAs='svg' />
+        <QrCodeReact
+          className='Code__svg'
+          level={level}
+          value={value}
+          size={SIZES[size]}
+          renderAs='svg'
+        />
         <div className='Code__value'>{value}</div>
       </div>
     )

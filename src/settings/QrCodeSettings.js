@@ -8,7 +8,7 @@ class SettingsQrCode extends React.Component {
   }
 
   createChangeHandler (key) {
-    const {handleChange} = this.props
+    const { handleChange } = this.props
     return function (event) {
       const value = event.target.value
       handleChange({ [key]: value })

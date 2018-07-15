@@ -29,7 +29,7 @@ class BarCode extends React.Component {
   }
   update () {
     try {
-      const {value, format, width, height} = this.props
+      const { value, format, width, height } = this.props
       jsBarCode(this.refs.svg, value, {
         displayValue: false,
         format: format,
@@ -42,7 +42,7 @@ class BarCode extends React.Component {
     }
   }
   render () {
-    const {value} = this.props
+    const { value } = this.props
     return (
       <div className='Code'>
         <svg className='Code__svg' ref='svg' />

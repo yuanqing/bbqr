@@ -19,7 +19,7 @@ class App extends React.Component {
         barCode: {
           format: 'code128',
           width: 'medium',
-          height: 'medium',
+          height: 'medium'
         },
         qrCode: {
           level: 'L',
@@ -31,9 +31,14 @@ class App extends React.Component {
       data: []
     }
     this.handleCodeTypeChange = this.createChangeHandler.call(this, 'codeType')
-    this.handleCodeTypeSettingsChange = this.handleCodeTypeSettingsChange.bind(this)
+    this.handleCodeTypeSettingsChange = this.handleCodeTypeSettingsChange.bind(
+      this
+    )
     this.handleTextSizeChange = this.createChangeHandler.call(this, 'textSize')
-    this.handleColumnCountChange = this.createChangeHandler.call(this, 'columnCount')
+    this.handleColumnCountChange = this.createChangeHandler.call(
+      this,
+      'columnCount'
+    )
     this.handleDataChange = this.handleDataChange.bind(this)
   }
 
@@ -163,8 +168,15 @@ class App extends React.Component {
                   <div className='Content__row' key={index}>
                     {codes.map(function (value, index) {
                       return (
-                        <div className={`Content__cell Content__cell--${textSize}`} key={index}>
-                          <Code value={value} key={index} {...codeTypeSettings} />
+                        <div
+                          className={`Content__cell Content__cell--${textSize}`}
+                          key={index}
+                        >
+                          <Code
+                            value={value}
+                            key={index}
+                            {...codeTypeSettings}
+                          />
                         </div>
                       )
                     })}
