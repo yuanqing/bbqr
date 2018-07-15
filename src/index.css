@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  border: 0;
+  padding: 0;
+  background-color: inherit;
+}
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: inherit;
+}
+textarea {
+  resize: none;
+}
+select {
+  border-radius: 0;
+}
+::-webkit-input-placeholder {
+  color: #999;
+}
+::-moz-placeholder {
+  color: #999;
+}
+:-ms-input-placeholder {
+  color: #999;
+}
+:-moz-placeholder {
+  color: #999;
+}
+::selection {
+  color: #fff;
+  background: rgba(0,0,0,0.99);
+}
+::-moz-selection {
+  color: #fff;
+  background: rgba(0,0,0,0.99);
+}
+
+body {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: Courier, monospace;
+}
+
+@page {
+  size: auto;
+  margin: 0;
+}
+
+.RadioButtons,
+.TextArea__textArea,
+.TextBox__textBox,
+.SelectBox__selectBox {
+  background-color: #fff;
+  border-top: 1px solid #000;
+}
+.RadioButtons__radioButtonItem,
+.TextArea__textArea,
+.TextBox__textBox,
+.SelectBox__selectBox {
+  padding: 10px 12px 12px;
+}
+.TextArea__textArea:active,
+.TextArea__textArea:focus,
+.TextBox__textBox:active,
+.TextBox__textBox:focus,
+.SelectBox__selectBox:active,
+.SelectBox__selectBox:focus {
+  background-color: #f2f2f2;
+}
+
+.RadioButtons {
+  display: flex;
+}
+.RadioButtons__radioButtonItem {
+  flex-grow: 1;
+  cursor: pointer;
+}
+.RadioButtons__radioButton {
+  pointer-events: none;
+  float: left;
+  position: relative;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  margin-right: 6px;
+  margin-top: -6px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.RadioButtons__radioButton:active,
+.RadioButtons__radioButton:focus,
+.RadioButtons__radioButton:checked {
+  border-width: 4px;
+}
+.RadioButtons__label {
+  float: left;
+}
+
+.TextArea {
+  display: flex;
+  flex-direction: column;
+}
+.TextArea__textArea,
+.TextBox__textBox {
+  display: block;
+  width: 100%;
+}
+.TextArea__textArea {
+  flex-grow: 1;
+}
+
+.SelectBox {
+  position: relative;
+}
+.SelectBox__selectBox {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+.SelectBox:before {
+  pointer-events: none;
+  display: block;
+  content: "\25BE";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  vertical-align: middle;
+}
+
+.App {
+  overflow-x: auto;
+}
+
+.Panel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  border-right: 1px solid #000;
+}
+.Panel__header {
+  cursor: default;
+  color: #fff;
+  padding: 10px 12px;
+  background-color: #000;
+  font: inherit;
+}
+.Panel__data {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+.Panel__dataTextArea {
+  flex-grow: 1;
+}
+@media print {
+  .Panel {
+    display: none !important;
+  }
+}
+
+@media screen {
+  .Content {
+    position: fixed;
+    top: -1px;
+    right: 0;
+    bottom: 0;
+    left: 299px;
+    overflow-x: scroll;
+  }
+}
+.Content__table {
+  display: table;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.Content__row {
+  display: table-row;
+  page-break-after: always;
+}
+.Content__cell {
+  border: 1px solid black;
+  display: table-cell;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+}
+.Content__cell--extraSmall {
+  font-size: 12px;
+}
+.Content__cell--small {
+  font-size: 16px;
+}
+.Content__cell--medium {
+  font-size: 20px;
+}
+.Content__cell--large {
+  font-size: 24px;
+}
+.Content__cell--extraLarge {
+  font-size: 28px;
+}
+
+.Code {
+  padding: 10px;
+}
+.Code__svg {
+  display: block;
+  margin: 0 auto;
+}
+.Code__value {
+  padding-top: 5px;
+  margin-bottom: -5px;
+}
