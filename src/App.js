@@ -54,6 +54,7 @@ class App extends React.Component {
     const { codeType, settings } = this.state
     this.setState({
       settings: {
+        ...settings,
         [codeType]: {
           ...settings[codeType],
           ...newSettings
