@@ -39,6 +39,10 @@ class App extends React.Component {
       this,
       'columnCount'
     )
+    this.handleRowsPerPageChange = this.createChangeHandler.call(
+      this,
+      'rowsPerPage'
+    )
     this.handleDataChange = this.handleDataChange.bind(this)
   }
 
@@ -78,7 +82,7 @@ class App extends React.Component {
   }
 
   render () {
-    const { codeType, settings, textSize, columnCount, data } = this.state
+    const { codeType, settings, textSize, columnCount, rowsPerPage, data } = this.state
     const Settings = settingsComponents[codeType]
     const Code = codeComponents[codeType]
     const codeTypeSettings = settings[codeType]
@@ -147,6 +151,24 @@ class App extends React.Component {
                 <option value='3'>Columns — 3</option>
                 <option value='4'>Columns — 4</option>
                 <option value='5'>Columns — 5</option>
+              </select>
+            </div>
+            <div className='SelectBox'>
+              <select
+                className='SelectBox__selectBox'
+                onChange={this.handleRowsPerPageChange}
+                value={rowsPerPage}
+              >
+                <option value='1'>Rows per page — 1</option>
+                <option value='2'>Rows per page — 2</option>
+                <option value='3'>Rows per page — 3</option>
+                <option value='4'>Rows per page — 4</option>
+                <option value='5'>Rows per page — 5</option>
+                <option value='6'>Rows per page — 6</option>
+                <option value='7'>Rows per page — 7</option>
+                <option value='8'>Rows per page — 8</option>
+                <option value='9'>Rows per page — 9</option>
+                <option value='10'>Rows per page — 10</option>
               </select>
             </div>
           </div>
