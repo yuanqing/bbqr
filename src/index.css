@@ -44,7 +44,7 @@ select {
 body {
   font-size: 18px;
   line-height: 24px;
-  font-family: Courier, monospace;
+  font-family: 'Inconsolata', 'Consolas', 'Menlo', 'Courier', monospace;
 }
 
 @page {
