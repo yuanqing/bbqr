@@ -14,12 +14,12 @@ class BarCode extends React.Component {
   }
   update () {
     try {
-      const { value, format, width, height } = this.props
+      const { value, barCodeFormat, barCodeWidth, barCodeHeight } = this.props
       jsBarCode(this.refs.svg, value, {
         displayValue: false,
-        format: format,
-        width: parseFloat(width),
-        height: parseFloat(height),
+        format: barCodeFormat,
+        width: parseFloat(barCodeWidth),
+        height: parseFloat(barCodeHeight),
         margin: 0
       })
     } catch (error) {

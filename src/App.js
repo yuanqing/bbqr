@@ -40,7 +40,7 @@ const defaultState = {
   barCodeWidth: '2',
   barCodeHeight: '40',
   qrCodeLevel: 'L',
-  qrCodeSize: '200',
+  qrCodeSize: '100',
   textSize: 'medium',
   columnCount: '2',
   data: []

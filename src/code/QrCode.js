@@ -3,14 +3,14 @@ const QrCodeReact = require('qrcode.react')
 
 class QrCode extends React.Component {
   render () {
-    const { level, value, size } = this.props
+    const { value, qrCodeLevel, qrCodeSize } = this.props
     return (
       <div className='Code'>
         <QrCodeReact
           className='Code__svg'
-          level={level}
+          level={qrCodeLevel}
           value={value}
-          size={parseFloat(size)}
+          size={parseFloat(qrCodeSize)}
           renderAs='svg'
         />
         <div className='Code__value'>{value}</div>
