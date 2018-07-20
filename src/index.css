@@ -195,6 +195,20 @@ body {
   font-weight: bold;
   line-height: 1;
   text-align: center;
+  font-weight: bold;
+}
+@media print {
+  .Content__table {
+    page-break-after: auto;
+  }
+  .Content__row {
+    page-break-inside: avoid;
+    page-break-after: left;
+  }
+  .Content__cell {
+    page-break-inside: avoid;
+    page-break-after: auto
+  }
 }
 .Content__cell--extraSmall {
   font-size: 12px;
@@ -213,13 +227,12 @@ body {
 }
 
 .Code {
-  padding: 10px;
+  padding: 8px 8px 0;
 }
 .Code__svg {
   display: block;
   margin: 0 auto;
 }
 .Code__value {
-  padding-top: 5px;
-  margin-bottom: -5px;
+  padding: 5px 0;
 }

@@ -3,27 +3,20 @@ const React = require('react')
 class SettingsQrCode extends React.Component {
   constructor (props) {
     super(props)
-    this.handleLevelChange = this.createChangeHandler.call(this, 'level')
-    this.handleSizeChange = this.createChangeHandler.call(this, 'size')
-  }
-
-  createChangeHandler (key) {
-    const { handleChange } = this.props
-    return function (event) {
-      const value = event.target.value
-      handleChange({ [key]: value })
-    }
+    const { createInputChangeHandler } = this.props
+    this.handleLevelChange = createInputChangeHandler('qrCodeLevel')
+    this.handleSizeChange = createInputChangeHandler('qrCodeSize')
   }
 
   render () {
-    const { level, size } = this.props
+    const { qrCodeLevel, qrCodeSize } = this.props
     return (
       <div className='Settings'>
         <div className='SelectBox'>
           <select
             className='SelectBox__selectBox'
             onChange={this.handleLevelChange}
-            value={level}
+            value={qrCodeLevel}
           >
             <option value='L'>Level — L</option>
             <option value='M'>Level — M</option>
@@ -31,18 +24,13 @@ class SettingsQrCode extends React.Component {
             <option value='H'>Level — H</option>
           </select>
         </div>
-        <div className='SelectBox'>
-          <select
-            className='SelectBox__selectBox'
+        <div className='TextBox'>
+          <input
+            type='text'
+            className='TextBox__textBox'
             onChange={this.handleSizeChange}
-            value={size}
-          >
-            <option value='extraSmall'>Size — XS</option>
-            <option value='small'>Size — S</option>
-            <option value='medium'>Size — M</option>
-            <option value='large'>Size — L</option>
-            <option value='extraLarge'>Size — XL</option>
-          </select>
+            value={qrCodeSize}
+          />
         </div>
       </div>
     )
