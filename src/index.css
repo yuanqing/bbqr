@@ -192,6 +192,7 @@ body {
 .Content__cell {
   border: 1px solid black;
   display: table-cell;
+  vertical-align: middle;
   font-weight: bold;
   line-height: 1;
   text-align: center;
@@ -226,13 +227,40 @@ body {
   font-size: 28px;
 }
 
-.Code {
-  padding: 8px 8px 0;
+.BarCode {
+  padding: 8px;
 }
-.Code__svg {
+.BarCode--invalid {
+  position: relative;
+  height: 100%;
+  min-width: 160px;
+}
+.BarCode--invalid .BarCode__svg {
+  display: none;
+}
+.BarCode--invalid:after {
+  content: 'Invalid';
   display: block;
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  color: #7f7f7f;
+  text-align: center;
 }
-.Code__value {
-  padding: 5px 0;
+.BarCode__svg {
+  display: block;
+  margin: auto;
+}
+
+.QrCode {
+  padding: 8px 8px 4px;
+}
+.QrCode__svg {
+  display: block;
+  margin: auto;
+}
+.QrCode__value {
+  padding-top: 5px;
 }

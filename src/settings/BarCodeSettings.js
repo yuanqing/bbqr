@@ -21,6 +21,7 @@ class SettingsBarCode extends React.Component {
           >
             <option value='CODE128'>Format — CODE128</option>
             <option value='CODE39'>Format — CODE39</option>
+            <option value='EAN13'>Format — EAN13</option>
           </select>
         </div>
         <div className='TextBox'>

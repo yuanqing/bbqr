@@ -13,25 +13,26 @@ class BarCode extends React.Component {
     this.update()
   }
   update () {
+    this.refs.root.classList.remove('BarCode--invalid')
     try {
-      const { value, barCodeFormat, barCodeWidth, barCodeHeight } = this.props
+      const { barCodeFormat, barCodeHeight, barCodeWidth, value } = this.props
       jsBarCode(this.refs.svg, value, {
-        displayValue: false,
+        displayValue: true,
         format: barCodeFormat,
-        width: parseFloat(barCodeWidth),
+        font: 'inherit',
         height: parseFloat(barCodeHeight),
-        margin: 0
+        margin: 0,
+        textMargin: 0,
+        width: parseFloat(barCodeWidth)
       })
     } catch (error) {
-      console.error(error)
+      this.refs.root.classList.add('BarCode--invalid')
     }
   }
   render () {
-    const { value } = this.props
     return (
-      <div className='Code'>
-        <svg className='Code__svg' ref='svg' />
-        <div className='Code__value'>{value}</div>
+      <div className='BarCode' ref='root'>
+        <svg className='BarCode__svg' ref='svg' />
       </div>
     )
   }
