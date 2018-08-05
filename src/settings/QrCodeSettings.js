@@ -18,10 +18,10 @@ class SettingsQrCode extends React.Component {
             onChange={this.handleLevelChange}
             value={qrCodeLevel}
           >
-            <option value='L'>Level — L</option>
-            <option value='M'>Level — M</option>
-            <option value='Q'>Level — Q</option>
-            <option value='H'>Level — H</option>
+            <option value='l'>Level — L</option>
+            <option value='m'>Level — M</option>
+            <option value='q'>Level — Q</option>
+            <option value='h'>Level — H</option>
           </select>
         </div>
         <div className='TextBox'>

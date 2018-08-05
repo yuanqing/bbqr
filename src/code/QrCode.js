@@ -9,7 +9,7 @@ class QrCode extends React.Component {
         <QrCodeReact
           bgColor='transparent'
           className='QrCode__svg'
-          level={qrCodeLevel}
+          level={qrCodeLevel.toUpperCase()}
           renderAs='svg'
           size={parseFloat(qrCodeSize)}
           value={value}

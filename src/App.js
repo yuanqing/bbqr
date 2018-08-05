@@ -1,17 +1,10 @@
 const lodashChunk = require('lodash.chunk')
 const React = require('react')
 
-const settingsComponents = {
-  barCode: require('./settings/BarCodeSettings'),
-  qrCode: require('./settings/QrCodeSettings')
-}
+const CodeComponents = require('./code')
+const SettingsComponents = require('./settings')
 
-const codeComponents = {
-  barCode: require('./code/BarCode'),
-  qrCode: require('./code/QrCode')
-}
-
-function getLocationHash() {
+function getLocationHash () {
   const hash = window.location.hash
   return hash[0] === '#' ? hash.substring(1) : hash
 }
@@ -20,7 +13,7 @@ function deserialize (string) {
   if (string === '') {
     return {}
   }
-  return string.split('&').reduce(function(result, item) {
+  return string.split('&').reduce(function (result, item) {
     const split = item.split('=')
     result[split[0]] = split[1]
     return result
@@ -28,10 +21,12 @@ function deserialize (string) {
 }
 
 function serialize (data) {
-  return Object.keys(data).reduce(function(result, key) {
-    result.push(`${key}=${data[key]}`)
-    return result
-  }, []).join('&')
+  return Object.keys(data)
+    .reduce(function (result, key) {
+      result.push(`${key}=${data[key]}`)
+      return result
+    }, [])
+    .join('&')
 }
 
 const defaultState = {
@@ -39,11 +34,10 @@ const defaultState = {
   barCodeFormat: 'code128',
   barCodeWidth: '2',
   barCodeHeight: '40',
-  qrCodeLevel: 'L',
-  qrCodeSize: '100',
-  textSize: 'medium',
   columnCount: '2',
-  data: []
+  qrCodeLevel: 'l',
+  qrCodeSize: '100',
+  textSize: 'm'
 }
 
 class App extends React.Component {
@@ -52,23 +46,20 @@ class App extends React.Component {
     const hash = getLocationHash()
     this.state = {
       ...defaultState,
-      ...deserialize(hash)
+      ...deserialize(hash),
+      data: []
     }
     this.createInputChangeHandler = this.createInputChangeHandler.bind(this)
     this.handleActiveCodeTypeChange = this.createInputChangeHandler(
       'activeCodeType'
     )
-    this.handleTextSizeChange = this.createInputChangeHandler(
-      'textSize'
-    )
-    this.handleColumnCountChange = this.createInputChangeHandler(
-      'columnCount'
-    )
+    this.handleTextSizeChange = this.createInputChangeHandler('textSize')
+    this.handleColumnCountChange = this.createInputChangeHandler('columnCount')
     this.handleDataChange = this.handleDataChange.bind(this)
   }
 
   updateHash () {
-    const {data, ...settings} = this.state
+    const { data, ...settings } = this.state
     window.location.hash = serialize(settings)
   }
   componentDidMount () {
@@ -106,14 +97,14 @@ class App extends React.Component {
       barCodeFormat,
       barCodeWidth,
       barCodeHeight,
+      columnCount,
+      data,
       qrCodeLevel,
       qrCodeSize,
-      textSize,
-      columnCount,
-      data
+      textSize
     } = this.state
-    const CodeComponent = codeComponents[activeCodeType]
-    const SettingsComponent = settingsComponents[activeCodeType]
+    const CodeComponent = CodeComponents[activeCodeType]
+    const SettingsComponent = SettingsComponents[activeCodeType]
     const settings = {
       barCodeFormat,
       barCodeWidth,
@@ -159,7 +150,9 @@ class App extends React.Component {
           </div>
           <div className='Panel__settings'>
             <SettingsComponent
-              createInputChangeHandler={this.createInputChangeHandler.bind(this)}
+              createInputChangeHandler={this.createInputChangeHandler.bind(
+                this
+              )}
               {...settings}
             />
             <div className='SelectBox'>
@@ -168,11 +161,11 @@ class App extends React.Component {
                 onChange={this.handleTextSizeChange}
                 value={textSize}
               >
-                <option value='extraSmall'>Text size — XS</option>
-                <option value='small'>Text size — S</option>
-                <option value='medium'>Text size — M</option>
-                <option value='large'>Text size — L</option>
-                <option value='extraLarge'>Text size — XL</option>
+                <option value='xs'>Text size — XS</option>
+                <option value='s'>Text size — S</option>
+                <option value='m'>Text size — M</option>
+                <option value='l'>Text size — L</option>
+                <option value='xl'>Text size — XL</option>
               </select>
             </div>
             <div className='SelectBox'>
